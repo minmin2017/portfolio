@@ -88,6 +88,12 @@ section.win>.wrap{position:relative;z-index:1}
 .sat.win::before{content:"";position:absolute;left:50%;top:8.5cqw;width:32cqw;height:32cqw;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#ffd877 0%,#ffd87788 38%,#ffd87700 70%);z-index:-1;pointer-events:none}
 .sat.top.win::before{top:calc(100% - 8.5cqw)}
 
+.yt{grid-column:1/-1;width:100%;max-width:900px;margin:6px auto 0}
+.yt .frame{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#000;box-shadow:var(--shadow);outline:3px solid var(--gold2);outline-offset:3px}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt p{margin-top:12px;text-align:center;color:var(--mut);font-size:14.5px}
+.yt p b{color:var(--tx)}
+
 /* ---------- marquee strip ---------- */
 .marquee{overflow:hidden;padding:22px 0;background:#fff;border-top:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mtrack{display:flex;gap:14px;width:max-content;animation:marquee 70s linear infinite}
@@ -300,6 +306,7 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
     <div class="row reveal win" id="ntu" data-mark="🏅">
       <div class="slider" data-award="🏅 Honorable Mention"><figure class="slide"><img class="fg" src="assets/ntu_me.jpg" alt="At the NTU Hackathon"><figcaption><b>NTU Hackathon</b> — Innovating Functional Recovery.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_unity.jpg" alt="Unity game scene"><figcaption><b>The rehab game</b> built in Unity.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_rig.jpg" alt="Prototype rig"><figcaption><b>Quick prototype rig</b> for the exercise input.</figcaption></figure></div>
       <div><div class="num">05</div><span class="tag">Simulation</span><div class="brands"><img class="tall" src="assets/logos/ntu.png" alt="Nanyang Technological University"><img src="assets/logos/unity.svg" alt="Unity"></div><div class="award">🏅 Honorable Mention — Top 20 of 100 teams</div><h3>NTU Hackathon — Stroke Rehab Game</h3><p>A game that makes post-therapy exercise fun for stroke patients, based on the organizers' patient research. I learned Unity here — and found it's the same engine industry uses for digital twins, like simulating machines on a production line.</p><div class="d">Apr 2026</div></div>
+      <div class="yt"><div class="frame"><iframe data-yt="px2wPyTyiCw" title="NTU Hackathon demo video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p><b>Demo video</b> — the rehab game and its input rig in action.</p></div>
     </div>
     <div class="row reveal">
       <div class="slider"><figure class="slide"><img class="fg" src="assets/line_follower.jpg" alt="Line-following robot"><figcaption><b>Line-following robot</b> with path memory (ESP32).</figcaption></figure><figure class="slide"><img class="fg" src="assets/pid_demo.jpg" alt="PID tuning demo"><figcaption><b>Showing a control system</b> — live PID tuning demo.</figcaption></figure></div>
@@ -436,6 +443,17 @@ document.querySelectorAll('.pick button').forEach(b => b.onclick = () => {
   document.querySelectorAll('.pick button').forEach(x => x.classList.toggle('on', x === b));
   dv.poster = b.dataset.poster; dv.src = b.dataset.src; dv.play().catch(() => {});
 });
+
+// YouTube: load when first seen, autoplay muted; pause when scrolled away
+const ytio = new IntersectionObserver(es => es.forEach(e => {
+  const f = e.target;
+  if (e.isIntersecting && !f.src) {
+    f.src = `https://www.youtube-nocookie.com/embed/${f.dataset.yt}?autoplay=${reduce ? 0 : 1}&mute=1&playsinline=1&rel=0&loop=1&playlist=${f.dataset.yt}&enablejsapi=1`;
+  } else if (f.src) {
+    f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: e.isIntersecting ? 'playVideo' : 'pauseVideo', args: [] }), '*');
+  }
+}), { threshold: .5 });
+document.querySelectorAll('iframe[data-yt]').forEach(f => ytio.observe(f));
 
 // fade sections in as they scroll into view
 const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); rio.unobserve(e.target); } }), { threshold: .12 });
