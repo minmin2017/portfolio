@@ -94,6 +94,10 @@ section.win>.wrap{position:relative;z-index:1}
 .yt p{margin-top:12px;text-align:center;color:var(--mut);font-size:14.5px}
 .yt p b{color:var(--tx)}
 
+.vid .vwrap{position:relative}
+.snd-btn{position:absolute;left:0;right:0;bottom:14px;margin:auto;width:max-content;z-index:4;border:0;border-radius:999px;padding:9px 18px;background:#000c;color:#fff;font:600 14px/1.2 inherit;cursor:pointer;box-shadow:0 6px 18px #0006;animation:bob 2s ease-in-out infinite}
+.snd-btn[hidden]{display:none}
+
 /* ---------- marquee strip ---------- */
 .marquee{overflow:hidden;padding:22px 0;background:#fff;border-top:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mtrack{display:flex;gap:14px;width:max-content;animation:marquee 70s linear infinite}
@@ -306,7 +310,7 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
     <div class="row reveal win" id="ntu" data-mark="🏅">
       <div class="slider" data-award="🏅 Honorable Mention"><figure class="slide"><img class="fg" src="assets/ntu_me.jpg" alt="At the NTU Hackathon"><figcaption><b>NTU Hackathon</b> — Innovating Functional Recovery.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_unity.jpg" alt="Unity game scene"><figcaption><b>The rehab game</b> built in Unity.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_rig.jpg" alt="Prototype rig"><figcaption><b>Quick prototype rig</b> for the exercise input.</figcaption></figure></div>
       <div><div class="num">05</div><span class="tag">Simulation</span><div class="brands"><img class="tall" src="assets/logos/ntu.png" alt="Nanyang Technological University"><img src="assets/logos/unity.svg" alt="Unity"></div><div class="award">🏅 Honorable Mention — Top 20 of 100 teams</div><h3>NTU Hackathon — Stroke Rehab Game</h3><p>A game that makes post-therapy exercise fun for stroke patients, based on the organizers' patient research. I learned Unity here — and found it's the same engine industry uses for digital twins, like simulating machines on a production line.</p><div class="d">Apr 2026</div></div>
-      <div class="yt"><div class="frame"><iframe data-yt="px2wPyTyiCw" title="NTU Hackathon demo video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><p><b>Demo video</b> — the rehab game and its input rig in action.</p></div>
+      <div class="yt"><div class="frame"><iframe data-yt="px2wPyTyiCw" title="NTU Hackathon demo video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe><button class="snd-btn">🔊 Tap for sound</button></div><p><b>Demo video</b> — the rehab game and its input rig in action.</p></div>
     </div>
     <div class="row reveal">
       <div class="slider"><figure class="slide"><img class="fg" src="assets/line_follower.jpg" alt="Line-following robot"><figcaption><b>Line-following robot</b> with path memory (ESP32).</figcaption></figure><figure class="slide"><img class="fg" src="assets/pid_demo.jpg" alt="PID tuning demo"><figcaption><b>Showing a control system</b> — live PID tuning demo.</figcaption></figure></div>
@@ -335,7 +339,7 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
   <div class="vids reveal">
     <div class="vid"><video class="auto" muted loop playsinline controls preload="none" poster="assets/manim_windings.jpg" src="assets/manim_windings.mp4#t=9"></video><div class="b"><h4>Manim: DC machine windings &amp; fields (3D)</h4><p>Teaching clip generated with Manim + Claude to explain armature winding and the two magnetic fields.</p></div></div>
     <div class="vid"><video class="auto" muted loop playsinline controls preload="none" poster="assets/manim_winding_full.jpg" src="assets/manim_winding_full.mp4#t=55"></video><div class="b"><h4>Manim: how a motor is wound</h4><p>One clip per concept, checked frame by frame before it ships.</p></div></div>
-    <div class="vid"><video class="auto" muted loop playsinline controls preload="none" poster="assets/print_hook.jpg" src="assets/print_hook.mp4"></video><div class="b"><h4>Real part off my printer</h4><p>Modeled and printed for the shop, checked against the customer's measurements.</p></div></div>
+    <div class="vid"><div class="vwrap"><video class="auto snd" muted loop playsinline controls preload="none" poster="assets/print_hook.jpg" src="assets/print_hook.mp4"></video><button class="snd-btn">🔊 Tap for sound</button></div><div class="b"><h4>Real part off my printer</h4><p>Modeled and printed for the shop, checked against the customer's measurements.</p></div></div>
   </div>
   <div class="ai reveal">
     <div><h4>Manim video pipeline</h4><p>A skill (<code>manim-teaching-video</code>) with my rendering rules, layout linter and frame checks, so every clip comes out consistent.</p></div>
@@ -431,9 +435,24 @@ document.querySelectorAll('.slider').forEach((sl, n) => {
   setTimeout(() => go(0), n * 150);
 });
 
-// videos: play muted while on screen, pause when scrolled away
+// sound: browsers only allow audio after the visitor's first tap / click / key on the page,
+// so everything autoplays muted and the clips that have audio unmute from that moment on
+let soundOK = !!(navigator.userActivation && navigator.userActivation.hasBeenActive);
+const ytCmd = (f, func, args = []) => f.contentWindow && f.contentWindow.postMessage(JSON.stringify({ event: 'command', func, args }), '*');
+const showButtons = () => document.querySelectorAll('.snd-btn').forEach(b => b.hidden = soundOK);
+function applySound() {
+  if (!soundOK) return showButtons();
+  document.querySelectorAll('iframe[data-yt]').forEach(f => { if (f.src && f.dataset.vis === '1') { ytCmd(f, 'unMute'); ytCmd(f, 'setVolume', [100]); } });
+  document.querySelectorAll('video.snd').forEach(v => { if (v.dataset.vis === '1' && v.muted) { v.muted = false; v.play().catch(() => { v.muted = true; v.play().catch(() => {}); }); } });
+}
+// hide the buttons a moment later, so the tap that enabled sound doesn't land on the player and pause it
+['pointerdown', 'keydown'].forEach(t => addEventListener(t, () => { if (!soundOK) { soundOK = true; applySound(); setTimeout(showButtons, 600); } }, { capture: true }));
+document.querySelectorAll('.snd-btn').forEach(b => b.addEventListener('click', () => { soundOK = true; applySound(); showButtons(); }));
+
+// videos: play while on screen, pause when scrolled away
 const vio = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause();
+  const v = e.target; v.dataset.vis = e.isIntersecting ? '1' : '0';
+  if (e.isIntersecting) { v.play().catch(() => {}); applySound(); } else v.pause();
 }), { threshold: .5 });
 if (!reduce) document.querySelectorAll('video.auto, #dv').forEach(v => vio.observe(v));
 
@@ -444,13 +463,15 @@ document.querySelectorAll('.pick button').forEach(b => b.onclick = () => {
   dv.poster = b.dataset.poster; dv.src = b.dataset.src; dv.play().catch(() => {});
 });
 
-// YouTube: load when first seen, autoplay muted; pause when scrolled away
+// YouTube: load when first seen, autoplay (muted until sound is allowed); pause when scrolled away
 const ytio = new IntersectionObserver(es => es.forEach(e => {
-  const f = e.target;
+  const f = e.target; f.dataset.vis = e.isIntersecting ? '1' : '0';
   if (e.isIntersecting && !f.src) {
-    f.src = `https://www.youtube-nocookie.com/embed/${f.dataset.yt}?autoplay=${reduce ? 0 : 1}&mute=1&playsinline=1&rel=0&loop=1&playlist=${f.dataset.yt}&enablejsapi=1`;
+    f.addEventListener('load', () => { applySound(); setTimeout(applySound, 1500); });
+    f.src = `https://www.youtube-nocookie.com/embed/${f.dataset.yt}?autoplay=${reduce ? 0 : 1}&mute=1&playsinline=1&rel=0&loop=1&playlist=${f.dataset.yt}&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`;
   } else if (f.src) {
-    f.contentWindow.postMessage(JSON.stringify({ event: 'command', func: e.isIntersecting ? 'playVideo' : 'pauseVideo', args: [] }), '*');
+    ytCmd(f, e.isIntersecting ? 'playVideo' : 'pauseVideo');
+    if (e.isIntersecting) applySound();
   }
 }), { threshold: .5 });
 document.querySelectorAll('iframe[data-yt]').forEach(f => ytio.observe(f));
