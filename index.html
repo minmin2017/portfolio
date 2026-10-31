@@ -79,6 +79,15 @@ section:nth-of-type(even){background:var(--bg2)}
 .win .slider,.win .player{outline:3px solid var(--gold2);outline-offset:3px;box-shadow:0 0 50px #e0a84a55,var(--shadow)}
 .slider[data-award]::after{content:attr(data-award);position:absolute;left:14px;top:12px;z-index:3;background:linear-gradient(135deg,#f8dc8f,#e0a84a 60%,#c98a1a);color:#1a1205;font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px;box-shadow:0 6px 18px #0006}
 
+
+/* award blocks: gold panel behind the whole block, not just the photo */
+section.win{background:radial-gradient(900px 420px at 85% 0%,#ffe3a0aa,#fff0 70%),linear-gradient(160deg,#fff8e7,#fdebc2)!important;border-top:1px solid #f0cf86;border-bottom:1px solid #f0cf86;position:relative;overflow:hidden}
+.row.win{position:relative;isolation:isolate;overflow:hidden;margin:22px -30px;padding:38px 30px;border-radius:26px;background:radial-gradient(700px 300px at 90% 0%,#ffe3a0aa,#fff0 70%),linear-gradient(150deg,#fff8e7,#fde7b5);border:1px solid #f0cf86;box-shadow:0 16px 40px #c98a1a22}
+section.win::before,.row.win::before{content:attr(data-mark);position:absolute;right:2%;bottom:-40px;font-size:220px;line-height:1;opacity:.09;z-index:-1;pointer-events:none;transform:rotate(-12deg)}
+section.win>.wrap{position:relative;z-index:1}
+.sat.win::before{content:"";position:absolute;left:50%;top:8.5cqw;width:32cqw;height:32cqw;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#ffd877 0%,#ffd87788 38%,#ffd87700 70%);z-index:-1;pointer-events:none}
+.sat.top.win::before{top:calc(100% - 8.5cqw)}
+
 /* ---------- marquee strip ---------- */
 .marquee{overflow:hidden;padding:22px 0;background:#fff;border-top:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mtrack{display:flex;gap:14px;width:max-content;animation:marquee 70s linear infinite}
@@ -173,6 +182,8 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
 @keyframes fill{to{width:100%}}
 
 @media(max-width:860px){
+  .row.win{margin:18px -12px;padding:26px 14px}
+  section.win::before,.row.win::before{font-size:140px}
   .row,.row:nth-child(even),.feature,.two{grid-template-columns:1fr}
   .row:nth-child(even) .slider{order:0}
   .arr{opacity:1}
@@ -220,7 +231,7 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
   <img src="assets/m_delta_c.jpg" alt=""><img src="assets/m_print_caliper.jpg" alt=""><img src="assets/m_abu.jpg" alt=""><img src="assets/m_cnc_milled.jpg" alt=""><img src="assets/m_ntu_me.jpg" alt=""><img src="assets/m_print_gears.jpg" alt=""><img src="assets/m_line_follower.jpg" alt=""><img src="assets/m_delta_a.jpg" alt=""><img src="assets/m_pid_demo.jpg" alt=""><img src="assets/m_lab_cnc_plc.jpg" alt=""><img src="assets/m_print_in_machine.jpg" alt=""><img src="assets/m_plc_wiring.jpg" alt=""><img src="assets/m_abu_team2.jpg" alt=""><img src="assets/m_balance_robot.jpg" alt=""><img src="assets/m_print_slicer.jpg" alt=""><img src="assets/m_cnc_vise.jpg" alt=""><img src="assets/m_ntu_unity.jpg" alt=""><img src="assets/m_print_packed.jpg" alt="">
 </div></div>
 
-<section id="delta"><div class="wrap">
+<section id="delta" class="win" data-mark="🏆"><div class="wrap">
   <div class="eyebrow">01 · Featured · Sep 2026</div>
   <div class="brands"><img class="tall" src="assets/logos/delta.svg" alt="Delta Electronics"><span class="award">🏆 Finalist — Top 3 of 12 teams</span></div>
   <h2>Delta Academy — Zero-Downtime Changeover Retrofit</h2>
@@ -282,11 +293,11 @@ footer .tm{font-size:12px;margin-top:28px;color:#8a94a8}
       <div class="slider"><figure class="slide"><img class="fg" src="assets/cnc_milled.jpg" alt="Milled aluminium part"><figcaption><b>Milled aluminium part</b> — spiral pocket and profiles.</figcaption></figure><figure class="slide"><img class="fg" src="assets/cnc_vise.jpg" alt="Measuring a part in the mill vise"><figcaption><b>Inspect in the vise</b> before unclamping.</figcaption></figure></div>
       <div><div class="num">03</div><span class="tag">CAD/CAM</span><div class="brands"><img src="assets/logos/fusion.svg" alt="Autodesk Fusion"></div><h3>CNC Turning &amp; Milling</h3><p>Fusion 360 CAD/CAM, G-code posting, machine setup and part inspection. 75-hour CAD-CAM/CNC certification (Phra Nakhon Polytechnic College, 2023).</p><div class="d">2024 – present</div></div>
     </div>
-    <div class="row reveal win" id="abu">
+    <div class="row reveal win" id="abu" data-mark="🏆">
       <div class="slider" data-award="🏆 Gold Award"><figure class="slide"><img class="fg" src="assets/abu.jpg" alt="ABU Robocon team with award"><figcaption><b>Best Creative Design Award, Gold</b> — ABU Robocon Thailand Championship.</figcaption></figure><figure class="slide"><img class="fg" src="assets/abu_team2.jpg" alt="Team with the robot"><figcaption><b>The team and our robot.</b></figcaption></figure></div>
       <div><div class="num">04</div><span class="tag">Robotics &amp; control</span><div class="award">🏆 Best Creative Design Award — Gold</div><h3>ABU Robocon 2025 — 5th of 24</h3><ul><li>Planned the system architecture before coding; switched from a ROS2 autonomy plan to a behavior tree to meet the deadline.</li><li>Real engineering problems: gear backlash, PID tuning on a mecanum drive.</li><li>Kept the project moving when attendance dropped — re-planned tasks around the people who showed up.</li></ul><div class="d">Nov 2025 – May 2026</div></div>
     </div>
-    <div class="row reveal win" id="ntu">
+    <div class="row reveal win" id="ntu" data-mark="🏅">
       <div class="slider" data-award="🏅 Honorable Mention"><figure class="slide"><img class="fg" src="assets/ntu_me.jpg" alt="At the NTU Hackathon"><figcaption><b>NTU Hackathon</b> — Innovating Functional Recovery.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_unity.jpg" alt="Unity game scene"><figcaption><b>The rehab game</b> built in Unity.</figcaption></figure><figure class="slide"><img class="fg" src="assets/ntu_rig.jpg" alt="Prototype rig"><figcaption><b>Quick prototype rig</b> for the exercise input.</figcaption></figure></div>
       <div><div class="num">05</div><span class="tag">Simulation</span><div class="brands"><img class="tall" src="assets/logos/ntu.png" alt="Nanyang Technological University"><img src="assets/logos/unity.svg" alt="Unity"></div><div class="award">🏅 Honorable Mention — Top 20 of 100 teams</div><h3>NTU Hackathon — Stroke Rehab Game</h3><p>A game that makes post-therapy exercise fun for stroke patients, based on the organizers' patient research. I learned Unity here — and found it's the same engine industry uses for digital twins, like simulating machines on a production line.</p><div class="d">Apr 2026</div></div>
     </div>
