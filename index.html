@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Witchayaphat Pakkhemaya — Mechatronics Engineer</title>
+<meta name="description" content="Mechatronics Engineering student at KMITL. Industrial automation (PLC, HMI, servo, inverter), robotics, CAD/CAM and AI-assisted engineering.">
+<meta property="og:title" content="Witchayaphat Pakkhemaya — Mechatronics Engineer">
+<meta property="og:description" content="Top 3 of 12 at Delta Academy · ABU Robocon 5th of 24 · running a real 3D-printing business.">
+<meta property="og:image" content="assets/abu.jpg">
+<style>
+:root{--bg:#0b1220;--bg2:#111a2e;--card:#16213a;--line:#25324f;--tx:#e8edf7;--mut:#9aa8c4;--gold:#e0a84a;--gold2:#f3c97a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font:16px/1.65 "Segoe UI",system-ui,-apple-system,"Noto Sans Thai",sans-serif}
+a{color:inherit;text-decoration:none}
+img,video{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+nav{position:sticky;top:0;z-index:20;background:rgba(11,18,32,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:22px;align-items:center;height:52px;font-size:14px;color:var(--mut);overflow-x:auto;white-space:nowrap}
+nav b{color:var(--gold);margin-right:auto;font-weight:600}
+nav a:hover{color:var(--gold2)}
+.hero{padding:64px 0 48px;background:radial-gradient(900px 400px at 85% -10%,#24365e55,transparent),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1fr 260px;gap:40px;align-items:center}
+.eyebrow{color:var(--gold);letter-spacing:.18em;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.08;margin:10px 0 14px;font-weight:700}
+.lead{color:var(--mut);font-size:18px;max-width:560px}
+.me{width:260px;height:260px;border-radius:50%;object-fit:cover;border:3px solid var(--gold);box-shadow:0 0 0 8px #e0a84a22}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat b{display:block;font-size:30px;color:var(--gold2);line-height:1.1}
+.stat span{color:var(--mut);font-size:13px}
+.cta{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap}
+.btn{padding:10px 18px;border-radius:999px;border:1px solid var(--gold);color:var(--gold2);font-size:14px}
+.btn.fill{background:var(--gold);color:#1a1405;font-weight:600}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;margin-bottom:6px}
+.sub{color:var(--mut);margin-bottom:30px}
+.tag{display:inline-block;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);border:1px solid #e0a84a66;border-radius:5px;padding:1px 8px;margin-right:6px}
+.feature{background:linear-gradient(135deg,#1b2a4d,#141f38);border:1px solid #31456f;border-radius:20px;padding:34px;display:grid;grid-template-columns:1.1fr 1fr;gap:34px;align-items:center}
+.feature h3{font-size:26px;margin:8px 0 10px}
+.feature ul{margin:14px 0 0 18px;color:var(--mut)}
+.feature li{margin:6px 0}
+.stack{display:grid;gap:10px}
+.node{background:#0e1730;border:1px solid #34497a;border-radius:12px;padding:12px 16px;display:flex;justify-content:space-between;font-size:14px}
+.node i{color:var(--gold2);font-style:normal}
+.arrow{text-align:center;color:var(--gold);line-height:1}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card .ph{aspect-ratio:16/10;background:#0e1730;object-fit:cover;width:100%}
+.card .ph.txt{display:grid;place-items:center;font-size:44px;color:#e0a84a88;background:linear-gradient(135deg,#142141,#0e1730)}
+.card .b{padding:18px 20px 20px}
+.card h3{font-size:18px;margin:6px 0}
+.card p{color:var(--mut);font-size:14.5px}
+.card .d{color:var(--mut);font-size:12px;margin-top:10px}
+.vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.vid{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.vid video{width:100%;background:#000;aspect-ratio:16/9;object-fit:contain}
+.vid .b{padding:14px 18px 18px}
+.vid h4{font-size:16px}.vid p{color:var(--mut);font-size:14px}
+.ai{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:30px}
+.ai div{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.ai h4{color:var(--gold2);font-size:15px;margin-bottom:6px}
+.ai p{color:var(--mut);font-size:14px}
+code{background:#0e1730;border:1px solid var(--line);border-radius:5px;padding:0 6px;font-size:12.5px;color:var(--gold2)}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.skills div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.skills h4{color:var(--gold);font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.skills p{color:var(--mut);font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.two ul{margin-left:18px;color:var(--mut)}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);text-align:center;color:var(--mut)}
+footer a{color:var(--gold2)}
+@media(max-width:780px){.hero .wrap,.feature,.two{grid-template-columns:1fr}.me{width:170px;height:170px;order:-1}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><b>W. Pakkhemaya</b><a href="#delta">Delta</a><a href="#prints">3D Printing</a><a href="#work">Projects</a><a href="#claude">Built with Claude</a><a href="#skills">Skills</a><a href="#contact">Contact</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Mechatronics Engineering · KMITL</div>
+    <h1>I design machines<br>and make them run.</h1>
+    <p class="lead">Automation, robotics and industrial systems — from PLC wiring and CNC to AI tooling I built myself. I like problems where the design has to work on a real machine.</p>
+    <div class="stats">
+      <div class="stat"><b>Top 3 / 12</b><span>Delta Academy finalist</span></div>
+      <div class="stat"><b>5th / 24</b><span>ABU Robocon 2025</span></div>
+      <div class="stat"><b>Real shop</b><span>3D-printing business, live customers</span></div>
+    </div>
+    <div class="cta"><a class="btn fill" href="#delta">See my main project</a><a class="btn" href="#claude">How I use Claude</a><a class="btn" href="mailto:wichayapatmeen@gmail.com">Email me</a></div>
+  </div>
+  <img class="me" src="assets/me.jpg" alt="Witchayaphat Pakkhemaya">
+</div></header>
+
+<section id="delta"><div class="wrap">
+  <div class="eyebrow">Featured · Sep 2026</div>
+  <h2>Delta Academy — Zero-Downtime Changeover Retrofit</h2>
+  <p class="sub">Top 3 of 12 teams, chosen after Delta's PLC / HMI / inverter training and a final pitch.</p>
+  <div class="feature">
+    <div>
+      <span class="tag">Industrial automation</span>
+      <h3>Change the product recipe without stopping the machine.</h3>
+      <p style="color:var(--mut)">Brief: make real, usable systems with PLC, inverter, servo and HMI. Our answer: upgrade an existing machine so operators switch product recipes without a shutdown or pulling parts off.</p>
+      <ul>
+        <li>Co-designed the retrofit; integrated the full Delta stack.</li>
+        <li><b style="color:var(--tx)">My part on the pitch:</b> made the operation video so the judges could <i>see</i> the mechanism working.</li>
+        <li>Goal: cut changeover downtime.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <div class="node"><span>HMI</span><i>pick the recipe</i></div><div class="arrow">▼</div>
+      <div class="node"><span>PLC</span><i>sequence &amp; interlocks</i></div><div class="arrow">▼</div>
+      <div class="node"><span>Servo</span><i>repositions the tooling</i></div>
+      <div class="node"><span>Inverter</span><i>conveyor speed per recipe</i></div>
+    </div>
+  </div>
+  <h3 style="margin:38px 0 14px;font-size:20px">The pitch videos I made for the judges</h3>
+  <div class="vids">
+    <div class="vid"><video controls preload="none" poster="assets/delta_b.jpg" src="assets/delta_b_changeover.mp4"></video><div class="b"><h4>1 · Changeover in under 5 minutes</h4><p>The core idea: a recipe change on the HMI, interlocks, and the servo-driven switch — in 60 s.</p></div></div>
+    <div class="vid"><video controls preload="none" poster="assets/delta_a.jpg" src="assets/delta_a_line.mp4"></video><div class="b"><h4>2 · Line overview</h4><p>The whole filling line, zone by zone, in a Unity digital twin.</p></div></div>
+    <div class="vid"><video controls preload="none" poster="assets/delta_c.jpg" src="assets/delta_c_hardware.mp4"></video><div class="b"><h4>3 · Hardware &amp; architecture</h4><p>PLC, HMI (DOP-100WS), inverter, motor and servos — how they connect.</p></div></div>
+  </div>
+</div></section>
+
+<section id="prints"><div class="wrap">
+  <div class="eyebrow">Real parts, real customers</div>
+  <h2>3D printing service</h2>
+  <p class="sub">Founder &amp; operator since Sep 2026 — I model parts that have no CAD file, choose the material, print on a Bambu H2C and ship.</p>
+  <div class="grid">
+    <article class="card"><img class="ph" src="assets/print_h2c.jpg" alt="Bambu H2C printer" loading="lazy"><div class="b"><h3>My print farm</h3><p>Bambu H2C with AMS — functional parts in engineering materials.</p></div></article>
+    <article class="card"><img class="ph" src="assets/print_hook2.jpg" alt="Printed hook" loading="lazy"><div class="b"><h3>Functional hook</h3><p>Modeled from the customer's measurements; printed upright for strength.</p></div></article>
+    <article class="card"><img class="ph" src="assets/print_hook3.jpg" alt="Printed part in hand" loading="lazy"><div class="b"><h3>Fresh off the bed</h3><p>Part chosen for strength, heat and use — not just "whatever filament is loaded".</p></div></article>
+  </div>
+  <p class="sub" style="margin-top:18px">Behind it: a quoting site (cost &amp; profit), AI auto-reply chat, auto-PR posting and a purchasing workflow I built.</p>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <h2>Projects &amp; experience</h2>
+  <p class="sub">Newest first.</p>
+  <div class="grid">
+    <article class="card"><div class="ph txt">⚙</div><div class="b"><span class="tag">CAD/CAM</span><h3>CNC Turning &amp; Milling</h3><p>Fusion 360 CAD/CAM, G-code posting, machine setup and part inspection. 75-hr CAD-CAM/CNC certification (Phra Nakhon Polytechnic College, 2023).</p><div class="d">2024 – present</div></div></article>
+    <article class="card"><img class="ph" src="assets/abu.jpg" alt="ABU Robocon team" loading="lazy"><div class="b"><span class="tag">Robotics &amp; control</span><h3>ABU Robocon 2025 — 5th of 24</h3><p>Planned the architecture before coding. Switched from a ROS2 plan to a behavior tree to hit the deadline. Fought real gear backlash and tuned PID on a mecanum drive — and kept the project moving when team attendance dropped.</p><div class="d">Nov 2025 – May 2026</div></div></article>
+    <article class="card"><div class="ph txt">🎮</div><div class="b"><span class="tag">Simulation</span><h3>NTU Hackathon — Stroke Rehab Game</h3><p>Designed a game-based tool that makes post-therapy exercise fun for stroke patients, from the organizers' patient research. Learned Unity — the same engine used for industrial digital twins.</p><div class="d">Apr 2026</div></div></article>
+    <article class="card"><div class="ph txt">🔧</div><div class="b"><span class="tag">PLC &amp; assembly</span><h3>Industrial Internship</h3><p>On-site with engineers: PLC panel wiring and mechanical assembly — learning by doing the real work.</p><div class="d">Summer 2025</div></div></article>
+    <article class="card"><img class="ph" src="assets/lab_scope.jpg" alt="Oscilloscope trace" loading="lazy"><div class="b"><span class="tag">Labs &amp; control</span><h3>Electronics, PID &amp; Siemens PLC labs</h3><p>Electronics lab, PID control and debugging real-vs-simulated behaviour, Siemens PLC labs (CNC and tank-level control), self-balancing robot and a line-following robot with path memory (ESP32).</p><div class="d">2024 – present</div></div></article>
+  </div>
+</div></section>
+
+<section id="claude"><div class="wrap">
+  <div class="eyebrow">How I work</div>
+  <h2>I build with Claude — as a daily engineering tool</h2>
+  <p class="sub">Not just chat: Claude Code drives my CAD, simulation, video and shop systems. Samples below were made this way.</p>
+  <div class="vids">
+    <div class="vid"><video controls preload="none" poster="assets/manim_windings.jpg" src="assets/manim_windings.mp4"></video><div class="b"><h4>Manim: DC machine windings &amp; fields (3D)</h4><p>Teaching clip I generate with Manim + Claude to explain armature winding and the two magnetic fields.</p></div></div>
+    <div class="vid"><video controls preload="none" poster="assets/manim_winding_full.jpg" src="assets/manim_winding_full.mp4"></video><div class="b"><h4>Manim: how a motor is wound (full lesson)</h4><p>One clip per concept, layout-checked frame by frame before it ships.</p></div></div>
+    <div class="vid"><video controls preload="none" poster="assets/print_hook.jpg" src="assets/print_hook.mp4"></video><div class="b"><h4>Real part off my printer</h4><p>Hook modeled and printed for the shop — dimensions checked against the customer's measurements.</p></div></div>
+  </div>
+  <div class="ai">
+    <div><h4>Manim video pipeline</h4><p>A skill (<code>manim-teaching-video</code>) with my rendering rules, layout linter and frame checks, so every clip comes out consistent.</p></div>
+    <div><h4>Custom skills &amp; agents</h4><p>Reusable skills for CAD, quoting, ad videos, calibration; delegated to sub-agents and other models (Gemini, Codex).</p></div>
+    <div><h4>MCP tool bridges</h4><p>Claude controls Fusion 360, Blender, Unity, Siemens TIA Portal and PLCSIM through MCP servers.</p></div>
+    <div><h4>3D-print shop automation</h4><p>Auto-reply chat, slicing-based quotes, FlowAccount drafts, purchasing, and a self-hosted order site.</p></div>
+    <div><h4>Powerful Note</h4><p>A local mind-map and notes app I built, with a voice interface and a bridge so Claude can read and act on my notes.</p></div>
+    <div><h4>n8n &amp; multi-API</h4><p>Scheduled workflows for content and ads; Python, Node and cloud GPU jobs (Kaggle, Colab) for heavy renders.</p></div>
+  </div>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Skills</h2><p class="sub">&nbsp;</p>
+  <div class="skills">
+    <div><h4>Industrial control</h4><p>Delta PLC, HMI, servo &amp; inverter; Siemens PLC; Ladder Logic</p></div>
+    <div><h4>Robotics &amp; control</h4><p>ROS2, behavior trees, PID, mecanum drive, encoder / gyro / IR / ultrasonic</p></div>
+    <div><h4>CAD/CAM &amp; CNC</h4><p>Fusion 360, CNC turning &amp; milling, G-code, 3D printing</p></div>
+    <div><h4>Software automation</h4><p>n8n, AI auto-reply, multi-API integration, Claude Code</p></div>
+    <div><h4>Programming</h4><p>Python, C, Lua, Arduino, ESP32, HTML, JavaScript, CSS</p></div>
+    <div><h4>Simulation</h4><p>Unity, Gazebo (beginner)</p></div>
+  </div>
+  <div class="two" style="margin-top:44px">
+    <div><h2 style="font-size:22px">Leadership</h2><ul><li>President of H-Room (cross-year reunion, 4 years)</li><li>Presented a control-systems project at KMITL Main Auditorium</li><li>Taught control concepts to Grade 10–12 students with a self-balancing robot</li><li>Organised peer tutoring groups</li></ul></div>
+    <div><h2 style="font-size:22px">Education</h2><ul><li><b style="color:var(--tx)">B.Eng. Mechatronics Engineering</b>, KMITL — GPA 3.38 (2024 – present)</li><li>Thai (native) · English B1 (KMITL TEP)</li></ul></div>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p style="margin:8px 0 16px">I'm looking for a place to build real systems and keep learning.</p>
+  <p><a href="mailto:wichayapatmeen@gmail.com">wichayapatmeen@gmail.com</a> · <a href="tel:+66863173213">086 317 3213</a></p>
+</div></footer>
+</body>
+</html>
